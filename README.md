@@ -10,7 +10,11 @@ A chess engine in at most 4,096 bytes of Python, built for make.fun's
 `main.py` is the whole engine: negamax alpha-beta with iterative deepening
 under a fixed node budget, quiescence search, a transposition table,
 MVV-LVA + killer/history move ordering, and a material + piece-square
-evaluation. It plays the house gauntlet through the env at
+evaluation. Search budget is 80,000 nodes per move (fixed count,
+never a clock). Local practice trials with the kit env and scorer:
+trial-0 Elo 1364, trial-1 Elo 1451 (a 100,000-node budget was tried
+and measured worse on trial-0 at Elo 1191, so it was reverted).
+It plays the house gauntlet through the env at
 `MAKEFUN_ENV_URL`, searching to a fixed node count, never a clock, so a
 replay makes the same moves.
 
